@@ -11,6 +11,7 @@ import time
 from dataclasses import dataclass
 from typing import Any
 
+from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
@@ -113,10 +114,14 @@ class TeacherClient:
 def from_env() -> TeacherClient:
     """Build a TeacherClient from environment variables.
 
+    Loads `.env` from the current working directory first; values already
+    present in the environment are not overridden.
+
     Required: `GCP_PROJECT_ID`.
     Optional: `GCP_REGION` (default us-central1), `GEMINI_MODEL`
     (default gemini-2.5-flash), `MAX_CALLS_PER_RUN` (default 50).
     """
+    load_dotenv()
     try:
         project_id = os.environ["GCP_PROJECT_ID"]
     except KeyError as e:

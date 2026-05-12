@@ -1,5 +1,12 @@
 .DEFAULT_GOAL := help
 
+# Load .env if present so terraform picks up TF_VAR_* and Python picks up
+# GCP_PROJECT_ID etc. Silently no-ops when .env is missing.
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+endif
+
 IMAGE := support-query-classifier
 TAG := dev
 PORT := 8080

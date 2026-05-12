@@ -108,6 +108,8 @@ def test_from_env_reads_required_and_optional_vars(
 
 
 def test_from_env_raises_without_project_id(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Disable .env loading so the local .env doesn't smuggle a value in.
+    monkeypatch.setattr("src.labeling.client.load_dotenv", lambda *args, **kwargs: False)
     monkeypatch.delenv("GCP_PROJECT_ID", raising=False)
     with pytest.raises(RuntimeError, match="GCP_PROJECT_ID"):
         from_env()
