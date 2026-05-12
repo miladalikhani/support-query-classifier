@@ -1785,6 +1785,7 @@ dev = [
     { name = "ruff" },
 ]
 labeling = [
+    { name = "google-cloud-storage" },
     { name = "google-genai" },
 ]
 ml = [
@@ -1821,7 +1822,10 @@ dev = [
     { name = "pytest-cov", specifier = ">=5.0" },
     { name = "ruff", specifier = ">=0.4" },
 ]
-labeling = [{ name = "google-genai", specifier = ">=0.3" }]
+labeling = [
+    { name = "google-cloud-storage", specifier = ">=2.10" },
+    { name = "google-genai", specifier = ">=0.3" },
+]
 ml = [
     { name = "datasets", specifier = ">=2.18" },
     { name = "numpy", specifier = ">=1.26" },

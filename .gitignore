@@ -51,6 +51,7 @@ data/raw/
 data/interim/
 data/processed/
 data/golden/
+data/golden_validation/
 *.csv
 *.parquet
 *.jsonl

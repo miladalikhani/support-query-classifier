@@ -5,6 +5,7 @@ from src.labeling.prompt import (
     build_prompt,
     build_response_schema,
     parse_prediction,
+    prompt_fingerprint,
 )
 
 
@@ -71,3 +72,49 @@ def test_parse_prediction_raises_on_wrong_intent_type() -> None:
 def test_parse_prediction_raises_on_unknown_intent() -> None:
     with pytest.raises(ValueError, match="Unknown intent"):
         parse_prediction({"intent": "made_up_class"}, valid_intents={"card_arrival"})
+
+
+# ---------- prompt_fingerprint ----------
+
+
+_DESC_A = {"alpha": "Customer asks about alpha.", "beta": "Customer asks about beta."}
+
+
+def test_fingerprint_is_deterministic() -> None:
+    a = prompt_fingerprint(valid_intents=["alpha", "beta"], descriptions=_DESC_A)
+    b = prompt_fingerprint(valid_intents=["alpha", "beta"], descriptions=_DESC_A)
+    assert a == b
+    assert len(a) == 16
+
+
+def test_fingerprint_ignores_intent_order() -> None:
+    a = prompt_fingerprint(valid_intents=["alpha", "beta"], descriptions=_DESC_A)
+    b = prompt_fingerprint(valid_intents=["beta", "alpha"], descriptions=_DESC_A)
+    assert a == b
+
+
+def test_fingerprint_changes_when_description_changes() -> None:
+    desc_b = {**_DESC_A, "alpha": "Customer asks about alpha (revised)."}
+    a = prompt_fingerprint(valid_intents=["alpha", "beta"], descriptions=_DESC_A)
+    b = prompt_fingerprint(valid_intents=["alpha", "beta"], descriptions=desc_b)
+    assert a != b
+
+
+def test_fingerprint_changes_when_temperature_changes() -> None:
+    a = prompt_fingerprint(
+        valid_intents=["alpha", "beta"], descriptions=_DESC_A, temperature=0.0
+    )
+    b = prompt_fingerprint(
+        valid_intents=["alpha", "beta"], descriptions=_DESC_A, temperature=0.5
+    )
+    assert a != b
+
+
+def test_fingerprint_changes_when_version_changes() -> None:
+    a = prompt_fingerprint(
+        valid_intents=["alpha", "beta"], descriptions=_DESC_A, prompt_version="1"
+    )
+    b = prompt_fingerprint(
+        valid_intents=["alpha", "beta"], descriptions=_DESC_A, prompt_version="2"
+    )
+    assert a != b

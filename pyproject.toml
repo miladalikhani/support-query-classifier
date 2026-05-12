@@ -28,6 +28,7 @@ serving = [
 ]
 labeling = [
     "google-genai>=0.3",
+    "google-cloud-storage>=2.10",
 ]
 pipelines = [
     "kfp>=2.7",
