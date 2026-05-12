@@ -84,6 +84,8 @@ module = [
     "google.genai.*",
     "google.api_core.*",
     "vertexai.*",
+    "fastapi.*",
+    "uvicorn.*",
 ]
 ignore_missing_imports = true
 
