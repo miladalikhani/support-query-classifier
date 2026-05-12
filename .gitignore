@@ -46,10 +46,11 @@ credentials.json
 service-account*.json
 .env.local
 
-# Data (don't commit customer transcripts)
+# Data (don't commit customer transcripts; golden set is materialized on demand)
 data/raw/
 data/interim/
 data/processed/
+data/golden/
 *.csv
 *.parquet
 *.jsonl
