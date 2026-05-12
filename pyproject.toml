@@ -79,6 +79,7 @@ module = [
     "sentence_transformers.*",
     "sklearn.*",
     "torch.*",
+    "pandas.*",
     "kfp.*",
     "google.cloud.*",
     "google.genai.*",
