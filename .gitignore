@@ -66,5 +66,11 @@ models/
 logs/
 *.log
 
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+
 # Claude Code
 .claude/
