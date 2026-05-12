@@ -1,0 +1,70 @@
+# Python virtual environments
+datatonic-env/
+venv/
+env/
+.venv/
+.env
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / credentials
+*.pem
+*.key
+secrets/
+credentials.json
+service-account*.json
+.env.local
+
+# Data (don't commit customer transcripts)
+data/raw/
+data/interim/
+data/processed/
+*.csv
+*.parquet
+*.jsonl
+
+# Models / artifacts
+models/
+*.pkl
+*.joblib
+*.bin
+*.h5
+*.onnx
+
+# Logs
+logs/
+*.log
+
+# Claude Code
+.claude/
