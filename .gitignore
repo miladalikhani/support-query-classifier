@@ -52,6 +52,8 @@ data/interim/
 data/processed/
 data/golden/
 data/golden_validation/
+data/teacher_labels/
+data/checkpoints/
 *.csv
 *.parquet
 *.jsonl

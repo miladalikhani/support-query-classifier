@@ -151,8 +151,8 @@ def test_compute_report_aggregates_tokens_and_cost() -> None:
         prompt_version="1",
         prompt_fp="fp",
     )
-    # 1M input @ $0.075 + 1M output @ $0.30 = $0.375
-    assert report["cost_usd"] == pytest.approx(0.375, abs=1e-3)
+    # 1M input @ $0.30 + 1M output @ $2.50 = $2.80
+    assert report["cost_usd"] == pytest.approx(2.80, abs=1e-3)
     assert report["tokens"]["input_total"] == 1_000_000
     assert report["tokens"]["output_total"] == 1_000_000
 
@@ -190,11 +190,11 @@ def test_label_concurrently_halts_on_cost_cap() -> None:
     client = MagicMock()
     examples = [("m", 0)] * 10
 
-    # Each call is "expensive": 0.5 USD per call.
-    expensive = _make_labeled(0, in_tok=1_000_000 * 3, out_tok=1_000_000 * 1)
-    # input: 3M * 0.075/M = 0.225
-    # output: 1M * 0.30/M = 0.300
-    # total per call: 0.525
+    # Each call is "expensive": ~$0.55 per call.
+    expensive = _make_labeled(0, in_tok=1_000_000, out_tok=100_000)
+    # input: 1M * 0.30/M = 0.30
+    # output: 100k * 2.50/M = 0.25
+    # total per call: 0.55
 
     with patch("src.labeling.validate_on_golden.label_message", return_value=expensive):
         results = label_concurrently(

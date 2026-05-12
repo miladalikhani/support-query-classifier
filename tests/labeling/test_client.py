@@ -89,8 +89,8 @@ def test_cost_usd_computes_against_published_pricing() -> None:
         latency_ms=0,
         model="gemini-2.5-flash",
     )
-    # 1M input @ $0.075 + 1M output @ $0.30 = $0.375
-    assert abs(resp.cost_usd() - 0.375) < 1e-9
+    # 1M input @ $0.30 + 1M output @ $2.50 = $2.80
+    assert abs(resp.cost_usd() - 2.80) < 1e-9
 
 
 def test_from_env_reads_required_and_optional_vars(

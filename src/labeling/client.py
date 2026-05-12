@@ -19,9 +19,11 @@ DEFAULT_MODEL = "gemini-2.5-flash"
 DEFAULT_LOCATION = "us-central1"
 DEFAULT_MAX_CALLS_PER_RUN = 50
 
-# Gemini 2.5 Flash pricing (text), USD per 1M tokens (as of design-doc date).
-USD_PER_M_INPUT_TOKENS = 0.075
-USD_PER_M_OUTPUT_TOKENS = 0.30
+# Gemini 2.5 Flash pricing on Vertex AI (text), USD per 1M tokens.
+# Verified 2026-05-12 against https://cloud.google.com/vertex-ai/generative-ai/pricing
+# (earlier values 0.075 / 0.30 were Gemini 1.5 Flash rates carried over by mistake).
+USD_PER_M_INPUT_TOKENS = 0.30
+USD_PER_M_OUTPUT_TOKENS = 2.50
 
 
 @dataclass(frozen=True)
