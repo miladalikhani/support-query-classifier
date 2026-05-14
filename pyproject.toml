@@ -97,6 +97,7 @@ module = [
     "uvicorn.*",
     "google.genai.*",
     "scipy.*",
+    "joblib.*",
 ]
 ignore_missing_imports = true
 
