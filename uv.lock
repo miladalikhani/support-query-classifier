@@ -1985,6 +1985,7 @@ pipelines = [
 serving = [
     { name = "fastapi" },
     { name = "google-cloud-bigquery" },
+    { name = "google-cloud-storage" },
     { name = "uvicorn", extra = ["standard"] },
 ]
 
@@ -2025,6 +2026,7 @@ pipelines = [
 serving = [
     { name = "fastapi", specifier = ">=0.110" },
     { name = "google-cloud-bigquery", specifier = ">=3.20" },
+    { name = "google-cloud-storage", specifier = ">=2.10" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.29" },
 ]
 
