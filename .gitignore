@@ -54,6 +54,7 @@ data/golden/
 data/golden_validation/
 data/teacher_labels/
 data/checkpoints/
+data/cache/
 *.csv
 *.parquet
 *.jsonl
