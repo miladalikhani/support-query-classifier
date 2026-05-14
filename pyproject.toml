@@ -21,6 +21,7 @@ ml = [
     "numpy>=1.26",
     "pandas>=2.2",
     "accelerate>=1.1",
+    "matplotlib>=3.8",
 ]
 serving = [
     "fastapi>=0.110",
@@ -98,6 +99,7 @@ module = [
     "google.genai.*",
     "scipy.*",
     "joblib.*",
+    "matplotlib.*",
 ]
 ignore_missing_imports = true
 
