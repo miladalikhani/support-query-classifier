@@ -96,6 +96,7 @@ module = [
     "fastapi.*",
     "uvicorn.*",
     "google.genai.*",
+    "scipy.*",
 ]
 ignore_missing_imports = true
 
