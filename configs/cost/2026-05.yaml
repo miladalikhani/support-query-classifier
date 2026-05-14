@@ -1,0 +1,23 @@
+# Pricing reference for the evaluation cost-per-1k computation.
+#
+# Filename carries the as-of date; cost numbers in the engagement report
+# can be traced back to this file. Bump by adding a new YYYY-MM file and
+# updating the default path in src/evaluation/cost.py.
+#
+# Sources (verified 2026-05-14):
+#   - Vertex AI Gemini 2.5 Flash, "Standard" tier (synchronous calls):
+#     https://cloud.google.com/vertex-ai/generative-ai/pricing
+#   - Cloud Run, Tier 1 regions, request-based billing (CPU allocated
+#     only during request handling), post-free-tier:
+#     https://cloud.google.com/run/pricing
+
+pricing_date: "2026-05"
+
+gemini_flash:
+  usd_per_million_input_tokens: 0.30
+  usd_per_million_output_tokens: 2.50
+
+cloud_run:
+  usd_per_vcpu_second: 0.000024
+  usd_per_gib_second: 0.0000025
+  usd_per_million_requests: 0.40
